@@ -50,7 +50,7 @@ resources:
   - name: CentralDB
     type: org.cloudfoundry.existing-service
     parameters:
-      service-name: teched-2017-container
+      service-name: openSAP.CentralDB.opensap-central-container
     properties:
       central-db-name: '${service-name}'
 
