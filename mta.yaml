@@ -1,7 +1,7 @@
 ID: TechEd2017.HBD260
 _schema-version: '2.0'
 description: TechEd 2017 HBD260 Introduction to Node.js
-version: 1.0.2017
+version: 1.1.2017
 provider: 'SAP TechEd'
 copyright: 'SAP TechEd'
 
@@ -28,11 +28,6 @@ modules:
       - name: hbd260-web
         properties:
           ui-url: '${default-url}'    
-    parameters:
-      host: hbd260-web
-      register-service-url: true
-      service-name: hdb260-web
-      service-url: '${default-url}'          
     requires:
       - name: hbd260-uaa
       - name: ui5-lib
