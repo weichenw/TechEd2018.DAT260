@@ -1,4 +1,4 @@
-service namespace "com.sap.openSAP.hana.example.services" {
+service namespace "teched2018.data260" {
    "PO.POView" as "purchaseDetails" key ("PURCHASEORDERID")
 	create using "xsjs:poExits.xsjslib::po_create"
     events(before "xsjs:poExits.xsjslib::po_create_before_exit");
