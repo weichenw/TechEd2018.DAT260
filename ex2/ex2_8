@@ -1,4 +1,4 @@
-service namespace "teched2018.data260" {
+service namespace "teched2018.dat260" {
 	"PO.Header"
 	as "POHeader" navigates ("Items" as "POItem");
 	

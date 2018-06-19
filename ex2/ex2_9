@@ -1,4 +1,4 @@
-service namespace "teched2018.data260" {
+service namespace "teched2018.dat260" {
    "PO.POView" as "purchaseDetails" key ("PURCHASEORDERID")
 	create using "xsjs:poExits.xsjslib::po_create"
     events(before "xsjs:poExits.xsjslib::po_create_before_exit");
