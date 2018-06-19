@@ -1,5 +1,6 @@
+/*eslint-env node, es6 */
 "use strict";
 
-module.exports = function(app,server) {
+module.exports = (app, server) => {
 		 app.use("/node", require("./routes/node")());
 };
