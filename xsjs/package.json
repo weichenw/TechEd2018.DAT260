@@ -1,0 +1,25 @@
+{
+	"dependencies": {
+		"@sap/xssec": "2.1.12",
+		"@sap/xsenv": "1.2.9",
+		"@sap/xsjs": "3.4.0",
+		"node-xlsx": "~0.11",
+		"node-zip": "~1.1.1",
+		"xmldoc": "~1.1.0"
+	},
+	"description": "Template of Node.js Module that supports XSJS",
+	"devDependencies": {
+		"@sap/xsjs-test": "2.0.16"
+	},
+	"files": [],
+	"main": "server.js",
+	"name": "js",
+	"scripts": {
+		"start": "node server.js",
+		"test": "node testrun.js"
+	},
+	"engines": {
+		"node": " ^8 "
+	},
+	"version": "1.0.0"
+}
