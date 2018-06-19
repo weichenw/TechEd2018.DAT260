@@ -31,7 +31,8 @@ modules:
       UAA_SERVICE_NAME: dat260-uaa
     parameters:
       host: dat260-js
-      service-name: dat260-js     
+      service-name: dat260-js
+      memory: 2G      
     provides:
      - name: js_api
        properties:
