@@ -1,4 +1,4 @@
-	app.get("/whoAmI", function(req, res) {
+	app.get("/whoAmI", (req, res) => {
 		var userContext = req.authInfo;
 		var result = JSON.stringify({
 			userContext: userContext

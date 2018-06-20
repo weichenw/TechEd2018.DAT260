@@ -1,5 +1,5 @@
 	//Database Call Stored Procedure With Inputs
-	app.get("/procedures2/:partnerRole?", function(req, res) {
+	app.get("/procedures2/:partnerRole?", (req, res) => {
 		var client = req.db;
 		var hdbext = require("@sap/hdbext");
 		var partnerRole = req.params.partnerRole;
@@ -12,15 +12,15 @@
 			};
 		}
 		//(cleint, Schema, Procedure, callback)
-		hdbext.loadProcedure(client, null, "get_bp_addresses_by_role", function(err, sp) {
+		hdbext.loadProcedure(client, null, "get_bp_addresses_by_role", (err, sp) => {
 			if (err) {
-				res.type("text/plain").status(500).send("ERROR: " + err.toString());
+				res.type("text/plain").status(500).send(`ERROR: ${err.toString()}`);
 				return;
 			}
 			//(Input Parameters, callback(errors, Output Scalar Parameters, [Output Table Parameters])
-			sp(inputParams, function(err, parameters, results) {
+			sp(inputParams, (err, parameters, results) => {
 				if (err) {
-					res.type("text/plain").status(500).send("ERROR: " + err.toString());
+					res.type("text/plain").status(500).send(`ERROR: ${err.toString()}`);
 				}
 				var result = JSON.stringify({
 					EX_BP_ADDRESSES: results

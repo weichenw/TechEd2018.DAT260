@@ -1,4 +1,4 @@
-	app.get("/os", function(req, res) {
+	app.get("/os", (req, res) => {
 		var os = require("os");
 		var output = {};
 
