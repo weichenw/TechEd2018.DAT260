@@ -1,0 +1,20 @@
+	app.get("/classes2a", async(req, res) => {
+		try {
+			const results = await ooTutorial2.getFlightDetails(req.db, "AA", "0017", "20100421");
+			return res.type("text/html").status(200).send(
+				`Call Static Method: ${JSON.stringify(results)}`);
+		} catch (e) {
+			return res.type("application/json").status(200).send(`Call and catch errors: ${JSON.stringify(e)}`);
+		}
+
+	});
+
+	app.get("/classes2b", async(req, res) => {
+		try {
+			const results = await ooTutorial2.calculateFlightPrice(req.db, "AA", "0017", "20100421");
+			return res.type("text/html").status(200).send(
+				`Call Static Method - Calc Price: ${results.toString()}`);
+		} catch (e) {
+			return res.type("application/json").status(200).send(`Call and catch errors: ${JSON.stringify(e)}`);
+		}
+	});

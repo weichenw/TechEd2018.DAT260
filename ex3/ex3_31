@@ -1,0 +1,22 @@
+	app.get("/classes4a", async(req, res) => {
+		try {
+			let class4 = new ooTutorial4(req.db);
+			const results = await class4.getFlightDetails("AA", "0017", "20100421");
+			return res.type("text/html").status(200).send(
+				`Call Inherited Method: ${JSON.stringify(results)}`);
+		} catch (e) {
+			return res.type("application/json").status(200).send(`Call and catch errors: ${JSON.stringify(e)}`);
+		}
+	});
+
+	app.get("/classes4b", async(req, res) => {
+		try {
+			let class4 = new ooTutorial4(req.db);
+			await class4.getFlightDetails("AA", "0017", "20100421");
+			const results = await class4.calculateFlightPrice();
+			return res.type("text/html").status(200).send(
+				`Call Overridden Method - Calc Price: ${results.toString()}`);
+		} catch (e) {
+			return res.type("application/json").status(200).send(`Call and catch errors: ${JSON.stringify(e)}`);
+		}
+	});

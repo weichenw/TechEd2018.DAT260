@@ -1,0 +1,22 @@
+	app.get("/classes3a", async(req, res) => {
+		try {
+			let class3 = new ooTutorial3(req.db);
+			const results = await class3.getFlightDetails("AA", "0017", "20100421");
+			return res.type("text/html").status(200).send(
+				`Call Instance Method: ${JSON.stringify(results)}`);
+		} catch (e) {
+			return res.type("application/json").status(200).send(`Call and catch errors: ${JSON.stringify(e)}`);
+		}
+	});
+
+	app.get("/classes3b", async(req, res) => {
+		try {
+			let class3 = new ooTutorial3(req.db);
+			await class3.getFlightDetails("AA", "0017", "20100421");
+			const results = await class3.calculateFlightPrice();
+			return res.type("text/html").status(200).send(
+				`Call Instance Method - Calc Price: ${results.toString()}`);
+		} catch (e) {
+			return res.type("application/json").status(200).send(`Call and catch errors: ${JSON.stringify(e)}`);
+		}
+	});
