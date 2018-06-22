@@ -13,6 +13,7 @@
 		"async": "latest",
 		"ws": "1.1.1",
 		"accept-language-parser": "latest",
+		"nodemailer": "~4.6",
 		"node-xlsx": "~0.11",
 		"node-zip": "~1.1.1",
 		"xmldoc": "~1.1.0",
