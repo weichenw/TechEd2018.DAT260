@@ -39,7 +39,8 @@ modules:
     requires:
       - name: dat260-uaa
       - name: CentralDB
-      - name: CROSS_SCHEMA_SFLIGHT          
+      - name: CROSS_SCHEMA_SFLIGHT   
+      - name: dat260-smtp
     description: Node.js Module - Main work of this workshop is done here
     
   - name: web
@@ -94,3 +95,8 @@ resources:
     type: org.cloudfoundry.existing-service
     parameters:
       service-name: CROSS_SCHEMA_SFLIGHT
+
+  - name: dat260-smtp
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: dat260.smtp
