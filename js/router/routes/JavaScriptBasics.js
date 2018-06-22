@@ -8,7 +8,24 @@ module.exports = () => {
 
 	//Hello Router
 	app.get("/", (req, res) => {
-		res.send("JavaScript Basics Exercise");
+		let output =
+			`<H1>JavaScript Basics</H1></br>
+			<a href="${req.baseUrl}/dates">/dates</a> - Date processing</br>
+			<a href="${req.baseUrl}/array">/array</a> - Array processing</br>
+			<a href="${req.baseUrl}/json">/json</a> - JSON JavaScript Object Notation processing</br>
+			<a href="${req.baseUrl}/objects">/objects</a> - JavaScript Objects</br>
+			<a href="${req.baseUrl}/strings">/strings</a> - String processing</br>
+			<a href="${req.baseUrl}/classes">/classes</a> - JavaScript Classes</br>			
+			<a href="${req.baseUrl}/promises">/promises</a> - Promises</br>
+			<a href="${req.baseUrl}/constants">/constants</a> - Constants</br>
+			<a href="${req.baseUrl}/blockScoped">/blockScoped</a> - Block-Scoped Variables and Functions</br>	
+			<a href="${req.baseUrl}/parameterDefaults">/parameterDefaults</a> - Parameter Defaults</br>	
+			<a href="${req.baseUrl}/parameterMultiple">/parameterMultiple</a> - Handling unknown number of input parameters easily</br>		
+			<a href="${req.baseUrl}/unicode">/unicode</a> - Unicode Strings and Literals</br>
+			<a href="${req.baseUrl}/numFormat">/numFormat</a> - International Number Formatting</br>	
+			<a href="${req.baseUrl}/currFormat">/currFormat</a> - International Currency Formatting</br>
+			<a href="${req.baseUrl}/dateFormat">/dateFormat</a> - International Date/Time Formatting</br>`;
+		res.type("text/html").status(200).send(output);
 	});
 
 	//strings
@@ -221,7 +238,7 @@ module.exports = () => {
 		//Object Constructor
 		function purchaseOrder(purchaseOrderID) {
 			this.discount = function() {
-							return (this.grossAmount - this.grossAmount * ".10");
+				return (this.grossAmount - this.grossAmount * ".10");
 			};
 			let me = this;
 			return new Promise(async(resolve, reject) => {
@@ -350,5 +367,81 @@ module.exports = () => {
 				console.log(error);
 			});
 	});
+
+	//ES6 Constants
+	app.get("/constants", function(req, res) {
+		const fixVal = 10;
+		let newVal = fixVal;
+		try {
+			newVal++;
+			fixVal++;
+		} catch (e) {
+			res.type("text/html").status(200).send(
+				`Constant Value: ${fixVal.toString()}, Copied Value: ${newVal.toString()}, Error: ${e.toString()}`);
+		}
+	});
+
+	//Block Scoped
+	app.get("/blockScoped", function(req, res) {
+		let output;
+
+		function foo() {
+			return 1;
+		}
+		output = `Outer function result: ${foo()} `;
+		if (foo() === 1) {
+			function foo() {
+				return 2;
+			}
+			output += `Inner function results: ${foo()}`;
+		}
+		res.type("text/html").status(200).send(output);
+	});
+
+	//Parameter Defaults
+	app.get("/parameterDefaults", function(req, res) {
+		function math(a, b = 10, c = 12) {
+			return a + b + c;
+		}
+		res.type("text/html").status(200).send(`With Defaults: ${math(5)}, With supplied values: ${math(5,1,1)}`);
+
+	});
+
+	//Parameter Defaults
+	app.get("/parameterMultiple", function(req, res) {
+		function getLength(a, b, ...p) {
+			return a + b + p.length;
+		}
+		res.type("text/html").status(200).send(`2 plus 4 parameters: ${getLength(1,1,"stuff","More Stuff",8,"last param")}`);
+
+	});
+
+	//Unicode Strings and Literals
+	app.get("/unicode", function(req, res) {
+		if ("𠮷".length === 2) {
+			res.type("text/html").status(200).send(`Output: ${"𠮷".toString()}, Code Points: ${"𠮷".codePointAt(0)}`);
+		}
+	});
+
+	//Number 
+	app.get("/numFormat", function(req, res) {
+		let numEN = new Intl.NumberFormat("en-US");
+		let numDE = new Intl.NumberFormat("de-DE");
+		res.type("text/html").status(200).send(`US: ${numEN.format(123456789.10)}, DE: ${numDE.format(123456789.10)}`);
+	});
+	
+	//Currency Formatting
+	app.get("/currFormat", function(req, res) {
+		let curUS = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD"});
+		let curDE = new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR"});
+		res.type("text/html").status(200).send(`US: ${curUS.format(123456789.10)}, DE: ${curDE.format(123456789.10)}`);
+	});	
+
+	//Date/Time Formatting
+	app.get("/dateFormat", function(req, res) {
+		let dateUS = new Intl.DateTimeFormat("en-US");
+		let dateDE = new Intl.DateTimeFormat("de-DE");
+		res.type("text/html").status(200).send(`US: ${dateUS.format(new Date())}, DE: ${dateDE.format(new Date())}`);
+	});	
 	return app;
 };
