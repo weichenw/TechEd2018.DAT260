@@ -14,4 +14,5 @@ module.exports = (app, server) => {
 	app.use("/node/smtp", require("./routes/smtp")());
 	app.use("/node/oo", require("./routes/oo")());
 	app.use("/node/chat", require("./routes/chatServer")(server));
+	app.use("/node/auth", require("./routes/auth")());	
 };
