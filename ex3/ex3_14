@@ -7,8 +7,10 @@ module.exports = {
 		try {
 			http.get({
 					path: "http://www.loc.gov/pictures/search/?fo=json&q=SAP&",
-					host: "www.loc.gov",
-					port: "80",
+					//host: "www.loc.gov",
+					host: "proxy",	
+    			    port: "8080",	
+				//	port: "80",
 					headers: {
 						host: "www.loc.gov"
 					}
