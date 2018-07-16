@@ -149,7 +149,7 @@ module.exports = () => {
 
 		//Remove the first element
 		colors.shift();
-		body += `Remove the last element: ${colors.toString()} </p>`;
+		body += `Remove the first element: ${colors.toString()} </p>`;
 
 		//Copy specific positions - slice(start,end)
 		var slicedColors = colors.slice(2, 4);
