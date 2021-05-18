@@ -11,7 +11,7 @@
 		"express-ws": "3.0",
 		"passport": "~0.4.0",
 		"async": "latest",
-		"ws": "1.1.1",
+		"ws": ">=1.1.5",
 		"accept-language-parser": "latest",
 		"nodemailer": ">=6.4.16",
 		"node-xlsx": "~0.11",
