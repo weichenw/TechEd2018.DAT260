@@ -1,6 +1,6 @@
 {
 	"dependencies": {
-		"@sap/xssec": "2.1.12",
+		"@sap/xssec": "3.6.0",
 		"@sap/xsenv": "1.2.9",
 		"@sap/xsjs": "3.4.0",
 		"node-xlsx": "~0.11",
